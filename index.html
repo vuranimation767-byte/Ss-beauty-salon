@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS Beauty Salon | Premium Beauty & Grooming</title>
+<meta name="description" content="SS Beauty Salon - Premium beauty services by Amrit Singh Charak. Haircuts, bridal makeup, facials, waxing & more. Book online now!">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#b76e79;--primary-dark:#9a5560;--primary-light:#e8c4ca;--secondary:#c9a96e;--secondary-light:#f0e4c5;--accent:#7a9e7e;--bg:#faf7f2;--bg-warm:#f5efe6;--bg-card:#ffffff;--text:#3d2c2e;--text-light:#6b5b5d;--text-muted:#a89a9c;--border:#e8ddd5;--border-light:#f0e8e0;--shadow:0 4px 24px rgba(61,44,46,0.06);--shadow-hover:0 12px 40px rgba(61,44,46,0.1);}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background 0.5s,color 0.5s}
+body.dark{--bg:#1a1416;--bg-warm:#241e20;--bg-card:#2d2527;--text:#f0e8e0;--text-light:#c4b8ba;--text-muted:#8a7e80;--border:#3d3234;--border-light:#4a3e40;--shadow:0 4px 24px rgba(0,0,0,0.3);--shadow-hover:0 12px 40px rgba(0,0,0,0.4)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--primary),var(--secondary));border-radius:3px}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:0.06;pointer-events:none;z-index:0}
+.orb-1{width:700px;height:700px;background:var(--primary);top:-250px;left:-200px;animation:orbFloat 22s ease-in-out infinite}
+.orb-2{width:600px;height:600px;background:var(--secondary);bottom:-200px;right:-200px;animation:orbFloat 28s ease-in-out infinite reverse}
+.orb-3{width:500px;height:500px;background:var(--accent);top:40%;left:60%;animation:orbFloat 32s ease-in-out infinite 5s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-25px) scale(1.08)}66%{transform:translate(-25px,40px) scale(0.95)}}
+header{position:fixed;width:100%;top:0;z-index:1000;background:rgba(250,247,242,0.88);backdrop-filter:blur(30px);border-bottom:1px solid var(--border);padding:14px 0;transition:0.4s}
+body.dark header{background:rgba(26,20,22,0.88);border-color:var(--border)}
+header.scrolled{background:rgba(250,247,242,0.96);box-shadow:0 4px 30px rgba(61,44,46,0.08)}
+body.dark header.scrolled{background:rgba(26,20,22,0.96)}
+.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{color:var(--primary);font-size:28px;animation:pulseGlow 2.5s infinite}
+@keyframes pulseGlow{0%,100%{filter:drop-shadow(0 0 4px rgba(183,110,121,0.3))}50%{filter:drop-shadow(0 0 14px rgba(183,110,121,0.5))}}
+.logo span{background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav ul{display:flex;list-style:none;gap:28px;align-items:center}
+nav a{color:var(--text-light);text-decoration:none;font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:1.5px;position:relative;padding:5px 0;transition:0.3s}
+nav a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:0.3s;transform:translateX(-50%);border-radius:1px}
+nav a:hover{color:var(--primary)}nav a:hover::after{width:100%}
+.dark-toggle{width:40px;height:40px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:0.3s;color:var(--text);font-size:16px}
+.dark-toggle:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.hero{margin-top:60px;min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(183,110,121,0.06) 0%,rgba(201,169,110,0.04) 40%,rgba(250,247,242,0.92) 100%);z-index:1}
+body.dark .hero::before{background:linear-gradient(135deg,rgba(183,110,121,0.08) 0%,rgba(201,169,110,0.04) 40%,rgba(26,20,22,0.92) 100%)}
+.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;background:url('salon.jpg') center/cover;filter:blur(6px) brightness(0.82) saturate(0.85);animation:zoomSlow 30s infinite alternate}
+@keyframes zoomSlow{0%{transform:scale(1)}100%{transform:scale(1.12)}}
+.hero-content{position:relative;z-index:2;text-align:center;padding:40px;max-width:700px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 26px;background:linear-gradient(135deg,rgba(183,110,121,0.1),rgba(201,169,110,0.08));border:1px solid rgba(183,110,121,0.2);border-radius:50px;font-size:11px;text-transform:uppercase;letter-spacing:3px;margin-bottom:30px;color:var(--primary-dark);font-weight:600;animation:fadeInUp 0.8s 0.2s both}
+.hero h1{font-family:'Playfair Display',serif;font-size:56px;font-weight:700;line-height:1.1;margin-bottom:20px;color:var(--text);animation:fadeInUp 0.8s 0.4s both}
+.hero h1 span{background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:17px;color:var(--text-light);margin-bottom:40px;line-height:1.7;animation:fadeInUp 0.8s 0.6s both;max-width:560px;margin-left:auto;margin-right:auto}
+.hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;animation:fadeInUp 0.8s 0.8s both}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;text-decoration:none;border-radius:50px;font-weight:600;font-size:15px;border:none;cursor:pointer;position:relative;overflow:hidden;transition:0.4s;box-shadow:0 10px 40px rgba(183,110,121,0.25)}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);transition:0.6s}
+.btn:hover::before{left:100%}
+.btn:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(183,110,121,0.35)}
+.btn-outline{background:transparent;border:2px solid var(--primary);color:var(--primary);box-shadow:none}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-whatsapp{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 10px 40px rgba(37,211,102,0.2)}
+.btn-whatsapp:hover{box-shadow:0 20px 50px rgba(37,211,102,0.3)}
+.btn-sm{padding:10px 24px;font-size:13px}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+section{padding:80px 0}
+.section-title{font-family:'Playfair Display',serif;font-size:40px;text-align:center;margin-bottom:15px;position:relative;color:var(--text)}
+.section-title span{background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-title::after{content:'';display:block;width:80px;height:3px;background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));margin:20px auto 0;border-radius:2px}
+.section-subtitle{text-align:center;color:var(--text-muted);margin-bottom:50px;font-size:16px}
+.about{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-warm) 100%)}
+.about-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{position:relative;border-radius:25px;overflow:hidden;box-shadow:var(--shadow-hover)}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(183,110,121,0.12) 100%);pointer-events:none}
+.about-img img{width:100%;height:450px;object-fit:cover;transition:0.6s}
+.about-img:hover img{transform:scale(1.08)}
+.about-text h3{font-family:'Playfair Display',serif;font-size:36px;margin-bottom:20px;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-text p{line-height:1.9;color:var(--text-light);margin-bottom:18px;font-size:16px}
+.contact-info{margin-top:30px;padding:25px;background:var(--bg-card);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
+.contact-info p{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:15px;color:var(--text-light)}
+.contact-info i{color:var(--primary);width:20px;font-size:16px}
+.contact-info a{color:var(--primary);text-decoration:none;transition:0.3s;font-weight:500}
+.contact-info a:hover{color:var(--primary-dark)}
+.gallery{background:linear-gradient(180deg,var(--bg-warm),var(--bg))}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.gallery-item{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;aspect-ratio:4/3}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:0.6s}
+.gallery-item:hover img{transform:scale(1.1)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(61,44,46,0.85) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;opacity:0;transition:0.4s}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay h4{color:#fff;font-family:'Playfair Display',serif;font-size:20px;margin-bottom:6px}
+.gallery-overlay p{color:rgba(255,255,255,0.8);font-size:13px}
+.gallery-tag{position:absolute;top:15px;left:15px;background:var(--primary);color:#fff;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.testimonials{background:linear-gradient(180deg,var(--bg),var(--bg-warm))}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px}
+.testimonial-card{background:var(--bg-card);border:1px solid var(--border);border-radius:24px;padding:35px 30px;box-shadow:var(--shadow);transition:0.4s;position:relative}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover)}
+.testimonial-card::before{content:'\201C';position:absolute;top:20px;right:25px;font-family:'Playfair Display',serif;font-size:60px;color:var(--primary-light);line-height:1}
+.stars{color:var(--secondary);font-size:14px;margin-bottom:15px;letter-spacing:2px}
+.testimonial-text{font-size:15px;color:var(--text-light);line-height:1.8;margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-author img{width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--primary-light)}
+.testimonial-author div h4{font-size:15px;color:var(--text);margin-bottom:2px}
+.testimonial-author div span{font-size:12px;color:var(--text-muted)}
+.staff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.staff-card{background:var(--bg-card);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);transition:0.5s;text-align:center}
+.staff-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-hover)}
+.staff-img{height:280px;overflow:hidden;position:relative}
+.staff-img img{width:100%;height:100%;object-fit:cover;transition:0.6s}
+.staff-card:hover .staff-img img{transform:scale(1.08)}
+.staff-info{padding:25px 20px}
+.staff-info h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--text);margin-bottom:4px}
+.staff-info .role{color:var(--primary);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.staff-info p{color:var(--text-light);font-size:13px;line-height:1.7;margin-bottom:15px}
+.staff-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.staff-tag{background:var(--bg);border:1px solid var(--border);padding:5px 12px;border-radius:20px;font-size:11px;color:var(--text-light)}
+.services{background:linear-gradient(180deg,var(--bg-warm),var(--bg))}
+.service-categories{display:flex;gap:12px;justify-content:center;margin-bottom:35px;flex-wrap:wrap}
+.cat-btn{padding:10px 24px;border-radius:50px;border:2px solid var(--border);background:var(--bg-card);color:var(--text-light);font-size:13px;font-weight:600;cursor:pointer;transition:0.3s;font-family:'Poppins',sans-serif}
+.cat-btn:hover,.cat-btn.active{border-color:var(--primary);background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 8px 25px rgba(183,110,121,0.25)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:25px}
+.service-card{background:var(--bg-card);border:1px solid var(--border);border-radius:24px;padding:40px 30px;text-align:center;position:relative;overflow:hidden;transition:0.5s;box-shadow:var(--shadow);cursor:pointer}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(183,110,121,0.04),rgba(201,169,110,0.03));opacity:0;transition:0.5s}
+.service-card:hover::before{opacity:1}
+.service-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));transform:scaleX(0);transition:0.5s}
+.service-card:hover::after{transform:scaleX(1)}
+.service-card:hover{transform:translateY(-12px);border-color:rgba(183,110,121,0.2);box-shadow:var(--shadow-hover)}
+.service-card.selected{border-color:var(--primary);background:linear-gradient(135deg,rgba(183,110,121,0.04),rgba(201,169,110,0.02));box-shadow:0 8px 30px rgba(183,110,121,0.12)}
+.service-card.selected::after{transform:scaleX(1)}
+.service-card.selected .service-icon{transform:rotateY(360deg) scale(1.1);box-shadow:0 15px 40px rgba(183,110,121,0.3)}
+.service-card.selected .check-badge{opacity:1;transform:scale(1)}
+.service-icon{width:70px;height:70px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:#fff;position:relative;z-index:1;transition:0.5s;box-shadow:0 10px 30px rgba(183,110,121,0.2)}
+.service-card:hover .service-icon{transform:scale(1.1);box-shadow:0 15px 40px rgba(183,110,121,0.3)}
+.service-card h3{font-size:20px;margin-bottom:8px;position:relative;z-index:1;color:var(--text)}
+.service-card p{color:var(--text-muted);font-size:14px;margin-bottom:15px;position:relative;z-index:1}
+.price{font-size:28px;font-weight:700;background:linear-gradient(135deg,var(--secondary),#a08040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:relative;z-index:1}
+.check-badge{position:absolute;top:15px;right:15px;width:28px;height:28px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;opacity:0;transform:scale(0);transition:0.4s cubic-bezier(0.68,-0.55,0.265,1.55);z-index:2}
+.booking{background:linear-gradient(180deg,var(--bg-warm) 0%,var(--bg) 100%)}
+.booking-form{background:var(--bg-card);border:1px solid var(--border);border-radius:30px;padding:50px;max-width:800px;margin:0 auto;box-shadow:var(--shadow-hover);position:relative;overflow:hidden}
+.booking-form::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(183,110,121,0.03) 0%,transparent 70%);pointer-events:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;position:relative;z-index:1}
+.form-group{margin-bottom:25px;position:relative;z-index:1}
+.form-group label{display:block;margin-bottom:10px;font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-light);font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:16px 20px;border:2px solid var(--border);border-radius:16px;background:var(--bg);color:var(--text);font-size:15px;transition:0.4s;font-family:'Poppins',sans-serif}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 30px rgba(183,110,121,0.1)}
+body.dark .form-group input:focus,body.dark .form-group select:focus,body.dark .form-group textarea:focus{background:var(--bg-card)}
+.form-group input::placeholder{color:var(--text-muted)}
+.form-group select option{background:var(--bg-card);color:var(--text)}
+.total-price{background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(183,110,121,0.08));border:2px solid rgba(201,169,110,0.3);padding:20px;border-radius:20px;text-align:center;margin:20px 0;font-size:32px;font-weight:700;color:var(--secondary);display:none;position:relative;z-index:1;animation:glow 2s infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(201,169,110,0.1)}50%{box-shadow:0 0 40px rgba(201,169,110,0.15)}}
+.total-price.show{display:block}
+.selected-services-list{margin:10px 0;padding:18px;background:var(--bg);border-radius:16px;border:1px solid var(--border);display:none}
+.selected-services-list.show{display:block}
+.selected-services-list h4{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-light);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.selected-services-list ul{list-style:none}
+.selected-services-list li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border-light);font-size:14px;color:var(--text-light)}
+.selected-services-list li:last-child{border-bottom:none}
+.selected-services-list .total-row{font-weight:700;color:var(--text);margin-top:8px;padding-top:10px;border-top:2px solid var(--primary);border-bottom:none}
+.timeline-container{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:25px;margin-top:10px}
+.timeline-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.timeline-header h4{font-size:14px;color:var(--text-light);display:flex;align-items:center;gap:8px}
+.timeline-legend{display:flex;gap:16px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted)}
+.legend-dot{width:12px;height:12px;border-radius:50%}
+.legend-dot.free{background:var(--accent)}
+.legend-dot.booked{background:#ef4444}
+.legend-dot.selected{background:var(--primary)}
+.legend-dot.partial{background:var(--secondary)}
+.timeline-section{margin-bottom:20px}
+.timeline-section-title{font-size:13px;font-weight:600;color:var(--text-light);margin-bottom:12px;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:1px}
+.timeline-section-title i{font-size:14px;color:var(--secondary)}
+.timeline-track{position:relative;padding:15px 0;display:flex;flex-direction:column;gap:8px}
+.timeline-hour{display:flex;align-items:center;gap:12px}
+.timeline-hour-label{width:55px;font-size:12px;font-weight:600;color:var(--text-muted);text-align:right;flex-shrink:0}
+.timeline-slots{flex:1;display:flex;gap:6px;flex-wrap:wrap}
+.timeline-slot{flex:1;min-width:80px;padding:14px 8px;border-radius:12px;text-align:center;cursor:pointer;transition:0.3s;font-size:12px;font-weight:600;border:2px solid transparent;position:relative}
+.timeline-slot.free{background:var(--bg-card);border-color:var(--border);color:var(--text-light)}
+.timeline-slot.free:hover{background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-color:var(--primary);color:#fff;transform:scale(1.05);box-shadow:0 5px 20px rgba(183,110,121,0.2)}
+.timeline-slot.selected{background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-color:var(--primary);color:#fff;box-shadow:0 8px 25px rgba(183,110,121,0.3);transform:scale(1.05)}
+.timeline-slot.booked{background:rgba(239,68,68,0.08);border-color:#fca5a5;color:var(--text-muted);cursor:not-allowed;text-decoration:line-through;opacity:0.5}
+.timeline-slot.past{background:rgba(148,163,184,0.1);border-color:var(--border);color:var(--text-muted);cursor:not-allowed;opacity:0.3}
+.timeline-slot.partial{background:rgba(201,169,110,0.12);border-color:var(--secondary-light);color:var(--text-muted);cursor:not-allowed}
+.timeline-slot .slot-duration{font-size:10px;opacity:0.8;margin-top:2px;display:block}
+.timeline-slot.selected .slot-duration{color:rgba(255,255,255,0.9)}
+.current-time-line{position:absolute;left:67px;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent);z-index:5;pointer-events:none}
+.current-time-line::before{content:'NOW';position:absolute;left:-50px;top:-8px;font-size:9px;font-weight:700;color:var(--primary);background:var(--bg-card);padding:2px 6px;border-radius:4px;border:1px solid var(--primary)}
+.slot-range-info{background:linear-gradient(135deg,rgba(183,110,121,0.06),rgba(201,169,110,0.04));padding:14px 20px;border-radius:14px;margin-top:15px;border:1px solid var(--border);display:none;align-items:center;gap:12px;font-size:14px;color:var(--text-light)}
+.slot-range-info.show{display:flex}
+.slot-range-info i{color:var(--primary);font-size:16px}
+.slot-range-info strong{color:var(--primary)}
+.smart-suggest{margin-top:15px;padding:15px;background:linear-gradient(135deg,rgba(122,158,126,0.08),rgba(122,158,126,0.04));border-radius:14px;border:1px solid rgba(122,158,126,0.2);display:none}
+.smart-suggest.show{display:block}
+.smart-suggest h4{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.smart-suggest-slots{display:flex;gap:8px;flex-wrap:wrap}
+.smart-slot{padding:10px 18px;background:var(--bg-card);border:2px solid var(--accent);border-radius:12px;cursor:pointer;transition:0.3s;font-size:13px;font-weight:600;color:var(--accent)}
+.smart-slot:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+.payment-options{display:flex;gap:15px;margin-top:10px}
+.payment-option{flex:1;padding:30px 20px;border:2px solid var(--border);border-radius:20px;text-align:center;cursor:pointer;transition:0.4s;background:var(--bg);position:relative;overflow:hidden}
+.payment-option::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(183,110,121,0.05),rgba(201,169,110,0.03));opacity:0;transition:0.4s}
+.payment-option:hover::before{opacity:1}
+.payment-option:hover{border-color:var(--primary);transform:translateY(-5px);box-shadow:var(--shadow-hover)}
+.payment-option.selected{border-color:var(--primary);background:linear-gradient(135deg,rgba(183,110,121,0.08),rgba(201,169,110,0.04));box-shadow:0 15px 40px rgba(183,110,121,0.1)}
+.payment-option i{font-size:36px;margin-bottom:12px;display:block;color:var(--primary);position:relative;z-index:1;transition:0.4s}
+.payment-option:hover i{transform:scale(1.2)}
+.payment-option span{font-weight:600;font-size:15px;position:relative;z-index:1;color:var(--text)}
+.payment-option small{display:block;color:var(--text-muted);margin-top:6px;font-size:12px;position:relative;z-index:1}
+.loyalty{background:linear-gradient(180deg,var(--bg-warm),var(--bg))}
+.loyalty-card{background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:30px;padding:50px 40px;text-align:center;color:#fff;position:relative;overflow:hidden;max-width:700px;margin:0 auto}
+.loyalty-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 60%);animation:rotate 20s linear infinite}
+.loyalty-card>*{position:relative;z-index:1}
+.loyalty-card h3{font-family:'Playfair Display',serif;font-size:32px;margin-bottom:10px}
+.loyalty-card p{font-size:16px;opacity:0.9;margin-bottom:30px}
+.loyalty-perks{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.loyalty-perk{background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);padding:20px 25px;border-radius:20px;border:1px solid rgba(255,255,255,0.15);min-width:160px}
+.loyalty-perk i{font-size:28px;margin-bottom:10px;display:block}
+.loyalty-perk h4{font-size:15px;margin-bottom:4px}
+.loyalty-perk span{font-size:12px;opacity:0.8}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(61,44,46,0.45);z-index:2000;justify-content:center;align-items:center;backdrop-filter:blur(20px)}
+.modal.active{display:flex;animation:fadeIn 0.3s}
+.modal-content{background:linear-gradient(135deg,var(--bg-card),#fff8f5);padding:50px;border-radius:30px;text-align:center;max-width:480px;width:90%;border:1px solid var(--border);box-shadow:0 30px 60px rgba(61,44,46,0.12);position:relative;overflow:hidden}
+body.dark .modal-content{background:linear-gradient(135deg,var(--bg-card),#2d2527)}
+.modal-content::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(183,110,121,0.05) 0%,transparent 60%);animation:rotate 15s linear infinite}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.modal-content>*{position:relative;z-index:1}
+.modal-content h3{font-family:'Playfair Display',serif;color:var(--primary);font-size:28px;margin-bottom:15px}
+.upi-box{background:var(--bg);padding:22px;border-radius:20px;border:2px dashed var(--primary);margin:15px 0;text-align:center}
+.upi-label{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:8px}
+.upi-id{font-family:'Courier New',monospace;font-size:20px;font-weight:700;color:var(--primary);letter-spacing:1px;word-break:break-all}
+.qr-amount{font-size:40px;font-weight:700;color:var(--secondary);margin:10px 0}
+.steps-box{background:var(--bg);padding:20px;border-radius:16px;margin:15px 0;text-align:left;border:1px solid var(--border)}
+.steps-box h4{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-light);margin-bottom:12px;text-align:center}
+.steps-box ol{padding-left:20px;color:var(--text-light);font-size:14px;line-height:2}
+.steps-box li{margin-bottom:4px}
+.steps-box strong{color:var(--primary)}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border-radius:50px;text-decoration:none;font-weight:600;margin-top:15px;transition:0.3s;box-shadow:0 10px 30px rgba(37,211,102,0.2)}
+.whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(37,211,102,0.3)}
+footer{background:linear-gradient(180deg,var(--bg-warm) 0%,#ede6db 100%);padding:70px 0 30px;border-top:1px solid var(--border)}
+body.dark footer{background:linear-gradient(180deg,var(--bg-warm),#1a1416)}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:50px;max-width:1200px;margin:0 auto 50px;padding:0 20px}
+.footer-section h4{font-family:'Playfair Display',serif;color:var(--primary);margin-bottom:25px;font-size:24px}
+.footer-section p,.footer-section a{color:var(--text-light);text-decoration:none;line-height:2.2;transition:0.3s;font-size:15px}
+.footer-section a:hover{color:var(--primary)}
+.social-links{display:flex;gap:15px;margin-top:25px}
+.social-links a{width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text);font-size:18px;transition:0.4s;box-shadow:var(--shadow)}
+.social-links a:hover{background:var(--primary);border-color:var(--primary);color:#fff;transform:translateY(-5px) rotate(10deg);box-shadow:0 15px 30px rgba(183,110,121,0.25)}
+.copyright{text-align:center;color:var(--text-muted);padding-top:40px;border-top:1px solid var(--border);font-size:14px}
+.toast{position:fixed;bottom:30px;right:30px;padding:20px 28px;border-radius:20px;transform:translateY(100px) scale(0.9);opacity:0;transition:all 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);z-index:3000;font-weight:500;display:flex;align-items:center;gap:14px;max-width:380px;backdrop-filter:blur(20px);border:1px solid rgba(0,0,0,0.05);box-shadow:var(--shadow-hover)}
+.toast.show{transform:translateY(0) scale(1);opacity:1}
+.toast.error{background:rgba(183,110,121,0.95);color:#fff;box-shadow:0 15px 40px rgba(183,110,121,0.25)}
+.toast.success{background:rgba(122,158,126,0.95);color:#fff;box-shadow:0 15px 40px rgba(122,158,126,0.25)}
+.toast.info{background:rgba(14,165,233,0.95);color:#fff;box-shadow:0 15px 40px rgba(14,165,233,0.2)}
+.toast i{font-size:22px}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(60px);transition:all 1s cubic-bezier(0.16,1,0.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+.about-content{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.hero h1{font-size:36px}
+.timeline-slots{gap:4px}
+.timeline-slot{min-width:60px;padding:10px 4px;font-size:11px}
+.payment-options{flex-direction:column}
+.section-title{font-size:28px}
+.loyalty-perks{flex-direction:column;align-items:center}
+.timeline-hour-label{width:45px;font-size:11px}
+.current-time-line{left:57px}
+.current-time-line::before{left:-42px;font-size:8px}
+}
+</style>
+</head>
+<body>
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+<div class="bg-orb orb-3"></div>
+
+<header id="header">
+<div class="header-container">
+<a href="#" class="logo"><i class="fas fa-spa"></i> SS <span>Salon</span></a>
+<nav><ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#staff">Team</a></li>
+<li><a href="#testimonials">Reviews</a></li>
+<li><a href="#booking">Book</a></li>
+<li><div class="dark-toggle" onclick="toggleDark()" title="Toggle Dark Mode"><i class="fas fa-moon" id="darkIcon"></i></div></li>
+</ul></nav>
+</div>
+</header>
+
+<section class="hero" id="home">
+<div style="position:relative;z-index:2;text-align:center;padding:40px;max-width:700px;animation:fadeInUp 1s">
+<div class="hero-badge"><i class="fas fa-crown"></i> Premium Beauty Experience</div>
+<h1>Welcome to<br><span>SS Beauty Salon</span></h1>
+<p>Where luxury meets artistry. Experience world-class beauty treatments crafted exclusively by Amrit Singh Charak.</p>
+<div class="hero-buttons">
+<a href="#booking" class="btn"><i class="fas fa-calendar-check"></i> Book Now</a>
+<a href="#services" class="btn btn-outline"><i class="fas fa-cut"></i> Services</a>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+<h2 class="section-title reveal">About <span>Us</span></h2>
+<p class="section-subtitle reveal">Where beauty meets expertise</p>
+<div class="about-content">
+<div class="about-img reveal"><img src="salon.jpg" alt="SS Beauty Salon Interior" onerror="this.style.display='none'"></div>
+<div class="about-text reveal">
+<h3>SS Beauty Salon</h3>
+<p>Welcome to SS Beauty Salon, where beauty meets expertise. Owned and operated by Amrit Singh Charak, we provide top-notch beauty and grooming services.</p>
+<p>Our salon features modern facilities, skilled professionals, and a commitment to making you look and feel your absolute best.</p>
+<div class="contact-info">
+<p><i class="fas fa-user"></i> <strong>Owner:</strong> Amrit Singh Charak</p>
+<p><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:+918082815770">+91 8082815770</a></p>
+<p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:vuranimation767@gmail.com">vuranimation767@gmail.com</a></p>
+<p><i class="fas fa-clock"></i> <strong>Hours:</strong> 9:00 AM - 5:00 PM (Mon-Sat)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="gallery" class="gallery">
+<div class="container">
+<h2 class="section-title reveal">Our <span>Work</span></h2>
+<p class="section-subtitle reveal">Before & After transformations</p>
+<div class="gallery-grid">
+<div class="gallery-item reveal">
+<img src="gallery1.jpg" alt="Bridal Makeup" onerror="this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500'">
+<span class="gallery-tag">Bridal</span>
+<div class="gallery-overlay"><h4>Bridal Transformation</h4><p>Complete bridal makeup & hairstyling</p></div>
+</div>
+<div class="gallery-item reveal">
+<img src="gallery2.jpg" alt="Hair Color" onerror="this.src='https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500'">
+<span class="gallery-tag">Hair Color</span>
+<div class="gallery-overlay"><h4>Balayage Highlights</h4><p>Custom color for every skin tone</p></div>
+</div>
+<div class="gallery-item reveal">
+<img src="gallery3.jpg" alt="Facial" onerror="this.src='https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500'">
+<span class="gallery-tag">Facial</span>
+<div class="gallery-overlay"><h4>Glow Facial</h4><p>Rejuvenating skin treatment</p></div>
+</div>
+<div class="gallery-item reveal">
+<img src="gallery4.jpg" alt="Nails" onerror="this.src='https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500'">
+<span class="gallery-tag">Nails</span>
+<div class="gallery-overlay"><h4>Luxury Manicure</h4><p>Premium nail art & care</p></div>
+</div>
+<div class="gallery-item reveal">
+<img src="gallery5.jpg" alt="Hairstyling" onerror="this.src='https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=500'">
+<span class="gallery-tag">Styling</span>
+<div class="gallery-overlay"><h4>Event Hairstyling</h4><p>Party-ready looks</p></div>
+</div>
+<div class="gallery-item reveal">
+<img src="gallery6.jpg" alt="Waxing" onerror="this.src='https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=500'">
+<span class="gallery-tag">Waxing</span>
+<div class="gallery-overlay"><h4>Silky Smooth</h4><p>Full body waxing</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="staff">
+<div class="container">
+<h2 class="section-title reveal">Meet Our <span>Team</span></h2>
+<p class="section-subtitle reveal">Expert stylists dedicated to your beauty</p>
+<div class="staff-grid">
+<div class="staff-card reveal">
+<div class="staff-img"><img src="staff1.jpg" alt="Amrit Singh Charak" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400'"></div>
+<div class="staff-info">
+<h3>Amrit Singh Charak</h3>
+<div class="role">Owner & Lead Stylist</div>
+<p>10+ years of experience in bridal makeup, hair coloring, and precision cuts.</p>
+<div class="staff-tags"><span class="staff-tag">Bridal</span><span class="staff-tag">Color</span><span class="staff-tag">Cuts</span></div>
+</div>
+</div>
+<div class="staff-card reveal">
+<div class="staff-img"><img src="staff2.jpg" alt="Priya Sharma" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400'"></div>
+<div class="staff-info">
+<h3>Priya Sharma</h3>
+<div class="role">Senior Hairstylist</div>
+<p>Specialist in creative coloring, balayage, and modern haircut techniques.</p>
+<div class="staff-tags"><span class="staff-tag">Balayage</span><span class="staff-tag">Styling</span></div>
+</div>
+</div>
+<div class="staff-card reveal">
+<div class="staff-img"><img src="staff3.jpg" alt="Neha Gupta" onerror="this.src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400'"></div>
+<div class="staff-info">
+<h3>Neha Gupta</h3>
+<div class="role">Skincare Expert</div>
+<p>Certified facialist and skincare consultant with 6 years of experience.</p>
+<div class="staff-tags"><span class="staff-tag">Facials</span><span class="staff-tag">Waxing</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="services" class="services">
+<div class="container">
+<h2 class="section-title reveal">Our <span>Services</span></h2>
+<p class="section-subtitle reveal">Tap to select multiple services for your appointment</p>
+<div class="service-categories">
+<button class="cat-btn active" onclick="filterServices('all',this)">All Services</button>
+<button class="cat-btn" onclick="filterServices('hair',this)">Hair</button>
+<button class="cat-btn" onclick="filterServices('face',this)">Face</button>
+<button class="cat-btn" onclick="filterServices('hands',this)">Hands & Feet</button>
+<button class="cat-btn" onclick="filterServices('special',this)">Special</button>
+</div>
+<div class="services-grid" id="servicesGrid">
+<div class="service-card reveal" data-service="Haircut" data-price="150" data-cat="hair" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-cut"></i></div>
+<h3>Haircut</h3><p>Professional styling</p><div class="price">₹150</div>
+</div>
+<div class="service-card reveal" data-service="Hairstyling" data-price="300" data-cat="hair" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-wind"></i></div>
+<h3>Hairstyling</h3><p>Event-ready looks</p><div class="price">₹300</div>
+</div>
+<div class="service-card reveal" data-service="Shampoo & Conditioning" data-price="180" data-cat="hair" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-shower"></i></div>
+<h3>Shampoo</h3><p>Premium care</p><div class="price">₹180</div>
+</div>
+<div class="service-card reveal" data-service="Make-up" data-price="500" data-cat="face" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+<h3>Make-up</h3><p>Flawless finish</p><div class="price">₹500</div>
+</div>
+<div class="service-card reveal" data-service="Facials" data-price="400" data-cat="face" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-spa"></i></div>
+<h3>Facials</h3><p>Rejuvenating glow</p><div class="price">₹400</div>
+</div>
+<div class="service-card reveal" data-service="Eyebrow Shaping" data-price="50" data-cat="face" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-eye"></i></div>
+<h3>Eyebrow</h3><p>Perfect arch</p><div class="price">₹50</div>
+</div>
+<div class="service-card reveal" data-service="Threading" data-price="30" data-cat="face" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-grip-lines"></i></div>
+<h3>Threading</h3><p>Precision work</p><div class="price">₹30</div>
+</div>
+<div class="service-card reveal" data-service="Manicure" data-price="200" data-cat="hands" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
+<h3>Manicure</h3><p>Beautiful nails</p><div class="price">₹200</div>
+</div>
+<div class="service-card reveal" data-service="Pedicure" data-price="250" data-cat="hands" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-shoe-prints"></i></div>
+<h3>Pedicure</h3><p>Relaxing care</p><div class="price">₹250</div>
+</div>
+<div class="service-card reveal" data-service="Body Waxing" data-price="800" data-cat="hands" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-hand-holding-water"></i></div>
+<h3>Body Waxing</h3><p>Silky smooth</p><div class="price">₹800</div>
+</div>
+<div class="service-card reveal" data-service="Massage" data-price="600" data-cat="special" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-hot-tub"></i></div>
+<h3>Massage</h3><p>Deep relaxation</p><div class="price">₹600</div>
+</div>
+<div class="service-card reveal" data-service="Tanning" data-price="350" data-cat="special" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-sun"></i></div>
+<h3>Tanning</h3><p>Golden glow</p><div class="price">₹350</div>
+</div>
+<div class="service-card reveal" data-service="Bridal Services" data-price="5000" data-cat="special" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-ring"></i></div>
+<h3>Bridal Services</h3><p>Your special day</p><div class="price">₹5,000</div>
+</div>
+<div class="service-card reveal" data-service="Wedding & Event" data-price="3000" data-cat="special" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-glass-cheers"></i></div>
+<h3>Wedding</h3><p>Full package</p><div class="price">₹3,000</div>
+</div>
+<div class="service-card reveal" data-service="Mobile Salon" data-price="1000" data-cat="special" onclick="toggleService(this)">
+<div class="check-badge"><i class="fas fa-check"></i></div>
+<div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+<h3>Mobile Salon</h3><p>At your door</p><div class="price">₹1,000</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="testimonials" class="testimonials">
+<div class="container">
+<h2 class="section-title reveal">Client <span>Reviews</span></h2>
+<p class="section-subtitle reveal">What our customers say about us</p>
+<div class="testimonials-grid">
+<div class="testimonial-card reveal">
+<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="testimonial-text">"Amrit did my bridal makeup and I couldn't have been happier! The entire look lasted all day and I got so many compliments. Truly the best salon in town."</p>
+<div class="testimonial-author">
+<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100" alt="Ritu">
+<div><h4>Ritu Sharma</h4><span>Bridal Client</span></div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="testimonial-text">"I've been coming here for 2 years now. The hair coloring is always on point and the staff makes you feel so comfortable. Highly recommend for balayage!"</p>
+<div class="testimonial-author">
+<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Anjali">
+<div><h4>Anjali Mehta</h4><span>Regular Client</span></div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+<p class="testimonial-text">"The facial treatment was amazing. My skin has never looked better. Neha really knows her stuff when it comes to skincare. Will definitely be back!"</p>
+<div class="testimonial-author">
+<img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100" alt="Priya">
+<div><h4>Priya Gupta</h4><span>First Visit</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="loyalty">
+<div class="container">
+<h2 class="section-title reveal">Loyalty <span>Rewards</span></h2>
+<p class="section-subtitle reveal">Earn rewards every time you visit</p>
+<div class="loyalty-card reveal">
+<h3><i class="fas fa-gift"></i> SS Salon Rewards</h3>
+<p>Book with us and enjoy exclusive perks designed just for you!</p>
+<div class="loyalty-perks">
+<div class="loyalty-perk"><i class="fas fa-percentage"></i><h4>10% Off</h4><span>On your birthday</span></div>
+<div class="loyalty-perk"><i class="fas fa-hand-holding-heart"></i><h4>5th Service Free</h4><span>After 4 paid visits</span></div>
+<div class="loyalty-perk"><i class="fas fa-crown"></i><h4>VIP Priority</h4><span>Skip the queue</span></div>
+</div>
+<a href="#booking" class="btn btn-sm"><i class="fas fa-calendar-check"></i> Start Earning Rewards</a>
+</div>
+</div>
+</section>
+
+<section id="booking" class="booking">
+<div class="container">
+<h2 class="section-title reveal">Book <span>Appointment</span></h2>
+<p class="section-subtitle reveal">Choose your services and secure your slot</p>
+<form class="booking-form reveal" id="bookingForm">
+<div class="form-row">
+<div class="form-group"><label><i class="fas fa-user"></i> Full Name *</label><input type="text" id="name" placeholder="Your name" required></div>
+<div class="form-group"><label><i class="fas fa-phone"></i> Phone *</label><input type="tel" id="phone" placeholder="10 digit number" pattern="[0-9]{10}" required></div>
+</div>
+<div class="form-group"><label><i class="fas fa-envelope"></i> Email *</label><input type="email" id="email" placeholder="your@email.com" required></div>
+
+<div class="selected-services-list" id="selectedServicesList">
+<h4><i class="fas fa-list-check"></i> Selected Services</h4>
+<ul id="servicesListItems"></ul>
+</div>
+
+<div class="total-price" id="totalPrice"><i class="fas fa-tag"></i> Total: ₹<span id="priceValue">0</span></div>
+
+<div class="form-row">
+<div class="form-group"><label><i class="fas fa-calendar"></i> Date *</label><input type="date" id="date" required onchange="loadSlots()"></div>
+<div class="form-group"><label><i class="fas fa-layer-group"></i> Slots Needed</label><input type="text" id="slotsNeeded" value="0 services = 0 slots" readonly style="background:var(--bg);color:var(--text-muted);text-align:center;font-weight:600"></div>
+</div>
+
+<div class="form-group"><label><i class="fas fa-clock"></i> Time Slot (30 min each) *</label>
+<div class="timeline-container" id="timelineContainer">
+<div class="timeline-header">
+<h4><i class="fas fa-clock"></i> Select your time</h4>
+<div class="timeline-legend">
+<div class="legend-item"><div class="legend-dot free"></div> Free</div>
+<div class="legend-item"><div class="legend-dot selected"></div> Selected</div>
+<div class="legend-item"><div class="legend-dot booked"></div> Booked</div>
+<div class="legend-item"><div class="legend-dot partial"></div> Partial</div>
+</div>
+</div>
+<div class="timeline-track" id="timelineTrack"></div>
+</div>
+<div class="slot-range-info" id="slotRangeInfo"><i class="fas fa-info-circle"></i> <span id="slotRangeText"></span></div>
+<div class="smart-suggest" id="smartSuggest">
+<h4><i class="fas fa-lightbulb"></i> Suggested Slots</h4>
+<div class="smart-suggest-slots" id="smartSuggestSlots"></div>
+</div>
+<input type="hidden" id="selectedTime" required>
+</div>
+
+<div class="form-group"><label><i class="fas fa-credit-card"></i> Payment *</label>
+<div class="payment-options">
+<div class="payment-option" data-payment="cash" onclick="selectPay(this)">
+<i class="fas fa-money-bill-wave"></i><span>Pay Cash</span><small>At salon</small>
+</div>
+<div class="payment-option" data-payment="online" onclick="selectPay(this)">
+<i class="fab fa-whatsapp"></i><span>Pay via WhatsApp</span><small>UPI ID provided</small>
+</div>
+</div>
+<input type="hidden" id="paymentMethod" required>
+</div>
+
+<div class="form-group"><label><i class="fas fa-comment"></i> Notes</label><textarea id="notes" rows="2" placeholder="Any special requests..."></textarea></div>
+<button type="submit" class="btn" style="width:100%;justify-content:center" id="submitBtn"><i class="fas fa-calendar-check"></i> Confirm Booking</button>
+</form>
+</div>
+</section>
+
+<div class="modal" id="paymentModal">
+<div class="modal-content">
+<h3><i class="fab fa-whatsapp"></i> Complete Payment</h3>
+<div class="upi-box">
+<div class="upi-label"><i class="fas fa-mobile-alt"></i> UPI ID</div>
+<div class="upi-id" id="modalUpiId">rajputveena177@oksbi</div>
+</div>
+<div class="qr-amount" id="qrAmount">₹0</div>
+<div class="steps-box">
+<h4><i class="fas fa-list-ol"></i> How to Pay</h4>
+<ol>
+<li>Open your <strong>UPI app</strong> (PhonePe, GPay, Paytm)</li>
+<li>Pay to UPI ID: <strong id="stepUpiId">rajputveena177@oksbi</strong></li>
+<li>Take a <strong>screenshot</strong> of the payment</li>
+<li>Click below to <strong>send screenshot on WhatsApp</strong></li>
+</ol>
+</div>
+<a href="#" class="whatsapp-btn" id="whatsappBtn" target="_blank"><i class="fab fa-whatsapp"></i> Send Payment Screenshot</a>
+<button class="btn" style="width:100%;margin-top:15px" onclick="confirmOnlinePay()"><i class="fas fa-check"></i> I Have Paid</button>
+<button class="btn btn-outline" style="width:100%;margin-top:10px" onclick="closeModal()"><i class="fas fa-times"></i> Cancel</button>
+</div>
+</div>
+
+<div class="modal" id="rescheduleModal">
+<div class="modal-content">
+<h3><i class="fas fa-calendar-alt"></i> Manage Booking</h3>
+<p style="color:var(--text-light);margin:15px 0;font-size:15px">Enter your booking ID to cancel or reschedule</p>
+<div class="form-group" style="text-align:left">
+<label>Booking ID</label>
+<input type="text" id="manageBookingId" placeholder="e.g., SS1234567890" style="text-align:center;font-family:monospace">
+</div>
+<div style="display:flex;gap:12px;margin-top:20px">
+<button class="btn" style="flex:1" onclick="findBooking()"><i class="fas fa-search"></i> Find</button>
+<button class="btn btn-outline" style="flex:1" onclick="closeRescheduleModal()"><i class="fas fa-times"></i> Close</button>
+</div>
+<div id="bookingResult" style="margin-top:20px;display:none"></div>
+</div>
+</div>
+
+<footer>
+<div class="footer-content">
+<div class="footer-section">
+<h4><i class="fas fa-spa"></i> SS Salon</h4>
+<p>Premium beauty services since 2020. Your trusted partner for all beauty needs.</p>
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="https://wa.me/918082815770"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<div class="footer-section">
+<h4>Contact</h4>
+<p><i class="fas fa-user"></i> Amrit Singh Charak</p>
+<p><i class="fas fa-phone"></i> +91 8082815770</p>
+<p><i class="fas fa-envelope"></i> vuranimation767@gmail.com</p>
+<p><i class="fas fa-clock"></i> 9AM - 5PM (Mon-Sat)</p>
+</div>
+<div class="footer-section">
+<h4>Quick Links</h4>
+<p><a href="#home"><i class="fas fa-home"></i> Home</a></p>
+<p><a href="#services"><i class="fas fa-cut"></i> Services</a></p>
+<p><a href="#booking"><i class="fas fa-calendar"></i> Book Now</a></p>
+<p><a href="#" onclick="openRescheduleModal();return false"><i class="fas fa-calendar-alt"></i> Reschedule</a></p>
+</div>
+</div>
+<div class="copyright"><p>&copy; 2026 SS Beauty Salon. All rights reserved. | Designed for Amrit Singh Charak</p></div>
+</footer>
+
+<div class="toast" id="toast"><i class="fas fa-info-circle"></i><span id="toastMsg">Message</span></div>
+<script>
+const GAS_URL='https://script.google.com/macros/s/AKfycby5pvWQE_hgse0TkdqPjJkiSkm_s3aEoyJgxWUdUm6lsEwm_F-9QnlpwPOt6q-ZyMsq6g/exec';
+const UPI_ID='rajputveena177@oksbi';
+const WHATSAPP_NUMBER='918082815770';
+const PRICES={"Haircut":150,"Hairstyling":300,"Make-up":500,"Bridal Services":5000,"Facials":400,"Manicure":200,"Pedicure":250,"Body Waxing":800,"Eyebrow Shaping":50,"Threading":30,"Massage":600,"Tanning":350,"Shampoo & Conditioning":180,"Mobile Salon":1000,"Wedding & Event":3000};
+let selectedServices=[];
+const KEY='ss_salon_v7';
+
+const observer=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('active')})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>50)});
+
+function toggleDark(){document.body.classList.toggle('dark');const i=document.getElementById('darkIcon');i.className=document.body.classList.contains('dark')?'fas fa-sun':'fas fa-moon';localStorage.setItem('ss_dark',document.body.classList.contains('dark'))}
+if(localStorage.getItem('ss_dark')==='true'){document.body.classList.add('dark');document.getElementById('darkIcon').className='fas fa-sun'}
+
+function filterServices(cat,btn){document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.service-card').forEach(card=>{if(cat==='all'||card.dataset.cat===cat){card.style.display=''}else{card.style.display='none'}})}
+
+function toggleService(card){const service=card.dataset.service;const price=parseInt(card.dataset.price);if(card.classList.contains('selected')){card.classList.remove('selected');selectedServices=selectedServices.filter(s=>s.name!==service)}else{card.classList.add('selected');selectedServices.push({name:service,price:price})}updateSelectedServices();updatePrice();loadSlots()}
+
+function updateSelectedServices(){const listEl=document.getElementById('selectedServicesList');const itemsEl=document.getElementById('servicesListItems');if(selectedServices.length===0){listEl.classList.remove('show');return}listEl.classList.add('show');let html='';let total=0;selectedServices.forEach(s=>{html+='<li><span>'+s.name+'</span><span>Rs.'+s.price+'</span></li>';total+=s.price});html+='<li class="total-row"><span>Total</span><span>Rs.'+total+'</span></li>';itemsEl.innerHTML=html}
+
+function updatePrice(){let total=0;selectedServices.forEach(s=>total+=s.price);document.getElementById('priceValue').textContent=total.toLocaleString();const tp=document.getElementById('totalPrice');tp.style.display=total>0?'block':'none';if(total>0)tp.classList.add('show');const slots=selectedServices.length;document.getElementById('slotsNeeded').value=slots+' service'+(slots!==1?'s':'')+' = '+slots+' slot'+(slots!==1?'s':'')}
+
+function getBookings(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
+function saveBooking(b){const bookings=getBookings();bookings.push(b);localStorage.setItem(KEY,JSON.stringify(bookings))}
+function getBookedSlots(date){return getBookings().filter(b=>b.date===date&&b.status!=='Cancelled').map(b=>({time:b.time,slots:b.slots||1}))}
+function isSlotBooked(date,time){const booked=getBookedSlots(date);const tMinutes=timeToMinutes(time);for(let b of booked){const bStart=timeToMinutes(b.time);const bEnd=bStart+(b.slots*30);const sEnd=tMinutes+30;if(tMinutes<bEnd&&sEnd>bStart)return true}return false}
+function timeToMinutes(t){const[h,m]=t.split(':').map(Number);return h*60+m}
+function minutesToTime(mins){const h=Math.floor(mins/60);const m=mins%60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')}
+function formatTime(t){const[h,m]=t.split(':').map(Number);const ampm=h>=12?'PM':'AM';const hh=h%12||12;return hh+':'+String(m).padStart(2,'0')+' '+ampm}
+
+function makeTimeline(){const track=document.getElementById('timelineTrack');track.innerHTML='';const morning=document.createElement('div');morning.className='timeline-section';morning.innerHTML='<div class="timeline-section-title"><i class="fas fa-sun"></i> Morning (9:00 AM - 12:00 PM)</div>';const morningSlots=document.createElement('div');morningSlots.className='timeline-slots';for(let h=9;h<12;h++){for(let m=0;m<60;m+=30){const t=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');morningSlots.appendChild(createTimelineSlot(t))}}morning.appendChild(morningSlots);track.appendChild(morning);const afternoon=document.createElement('div');afternoon.className='timeline-section';afternoon.innerHTML='<div class="timeline-section-title"><i class="fas fa-cloud-sun"></i> Afternoon (12:00 PM - 5:00 PM)</div>';const afternoonSlots=document.createElement('div');afternoonSlots.className='timeline-slots';for(let h=12;h<17;h++){for(let m=0;m<60;m+=30){const t=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');afternoonSlots.appendChild(createTimelineSlot(t))}}afternoon.appendChild(afternoonSlots);track.appendChild(afternoon);addCurrentTimeLine()}
+
+function createTimelineSlot(t){const slot=document.createElement('div');slot.className='timeline-slot free';slot.textContent=formatTime(t);slot.dataset.time=t;slot.onclick=()=>selectTimelineSlot(slot);return slot}
+
+function addCurrentTimeLine(){const track=document.getElementById('timelineTrack');const existing=track.querySelector('.current-time-line');if(existing)existing.remove();const now=new Date();const currentMinutes=now.getHours()*60+now.getMinutes();const startMinutes=9*60;const endMinutes=17*60;if(currentMinutes<startMinutes||currentMinutes>endMinutes)return;const percent=((currentMinutes-startMinutes)/(endMinutes-startMinutes))*100;const line=document.createElement('div');line.className='current-time-line';line.style.top=percent+'%';track.appendChild(line)}
+
+function selectTimelineSlot(slotEl){if(slotEl.classList.contains('booked')||slotEl.classList.contains('past')){showToast('Slot not available!','error');return}const needed=selectedServices.length||1;const startTime=slotEl.dataset.time;const date=document.getElementById('date').value;const startMins=timeToMinutes(startTime);for(let i=0;i<needed;i++){const checkTime=minutesToTime(startMins+(i*30));if(isSlotBooked(date,checkTime)){showToast('Slot '+formatTime(checkTime)+' is already booked!','error');return}const el=document.querySelector('.timeline-slot[data-time="'+checkTime+'"]');if(!el){showToast('Not enough consecutive slots!','error');return}}document.querySelectorAll('.timeline-slot').forEach(x=>x.classList.remove('selected'));for(let i=0;i<needed;i++){const t=minutesToTime(startMins+(i*30));const el=document.querySelector('.timeline-slot[data-time="'+t+'"]');if(el){el.classList.add('selected');if(i===0){el.innerHTML=formatTime(t)+'<span class="slot-duration">'+needed*30+' min</span>'}}}document.getElementById('selectedTime').value=startTime;const endMins=startMins+(needed*30);const endTime=minutesToTime(endMins);document.getElementById('slotRangeText').textContent=formatTime(startTime)+' - '+formatTime(endTime)+' ('+needed*30+' min)';document.getElementById('slotRangeInfo').classList.add('show');document.getElementById('smartSuggest').classList.remove('show')}
+
+function loadSlots(){const date=document.getElementById('date').value;if(!date)return;document.querySelectorAll('.timeline-slot').forEach(s=>{s.classList.remove('booked','selected','past','partial');s.textContent=formatTime(s.dataset.time)});document.getElementById('selectedTime').value='';document.getElementById('slotRangeInfo').classList.remove('show');document.getElementById('smartSuggest').classList.remove('show');const today=new Date().toISOString().split('T')[0];if(date<today){showToast('Cannot book past dates!','error');document.getElementById('date').value=today;return}if(date===today){const now=new Date();const ch=now.getHours(),cm=now.getMinutes();document.querySelectorAll('.timeline-slot').forEach(s=>{const[h,m]=s.dataset.time.split(':').map(Number);if(h*60+m<=ch*60+cm+30)s.classList.add('past')});addCurrentTimeLine()}const booked=getBookedSlots(date);const needed=selectedServices.length||1;document.querySelectorAll('.timeline-slot').forEach(s=>{const t=s.dataset.time;const tMins=timeToMinutes(t);for(let b of booked){const bStart=timeToMinutes(b.time);const bEnd=bStart+(b.slots*30);if(tMins>=bStart&&tMins<bEnd){s.classList.add('booked')}}let canSelect=true;for(let i=0;i<needed;i++){const checkTime=minutesToTime(tMins+(i*30));const checkEl=document.querySelector('.timeline-slot[data-time="'+checkTime+'"]');if(!checkEl||checkEl.classList.contains('booked')||checkEl.classList.contains('past')){canSelect=false;break}}if(!canSelect&&!s.classList.contains('booked')&&!s.classList.contains('past')){s.classList.add('partial')}});generateSmartSuggestions(date);fetch(GAS_URL+'?action=getBookedSlots&date='+date).then(r=>r.json()).then(booked=>{booked.forEach(t=>{const s=document.querySelector('.timeline-slot[data-time="'+t+'"]');if(s)s.classList.add('booked')})}).catch(()=>{})}
+
+function generateSmartSuggestions(date){const needed=selectedServices.length||1;const suggestions=[];for(let h=9;h<17;h++){for(let m=0;m<60;m+=30){const t=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');const tMins=timeToMinutes(t);let available=true;for(let i=0;i<needed;i++){const checkTime=minutesToTime(tMins+(i*30));if(isSlotBooked(date,checkTime)||!document.querySelector('.timeline-slot[data-time="'+checkTime+'"]')||document.querySelector('.timeline-slot[data-time="'+checkTime+'"]').classList.contains('past')){available=false;break}}if(available){suggestions.push(t);if(suggestions.length>=3)break}}if(suggestions.length>=3)break}const container=document.getElementById('smartSuggestSlots');container.innerHTML='';if(suggestions.length>0){document.getElementById('smartSuggest').classList.add('show');suggestions.forEach(t=>{const btn=document.createElement('div');btn.className='smart-slot';const endMins=timeToMinutes(t)+(needed*30);btn.textContent=formatTime(t)+' - '+formatTime(minutesToTime(endMins));btn.onclick=()=>{const el=document.querySelector('.timeline-slot[data-time="'+t+'"]');if(el)selectTimelineSlot(el)};container.appendChild(btn)})}}
+
+const d=document.getElementById('date');d.min=new Date().toISOString().split('T')[0];d.value=new Date().toISOString().split('T')[0];
+
+function selectPay(el){document.querySelectorAll('.payment-option').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');document.getElementById('paymentMethod').value=el.dataset.payment}
+
+function showToast(msg,type){const t=document.getElementById('toast');const tm=document.getElementById('toastMsg');tm.textContent=msg;t.className='toast '+(type||'');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000)}
+
+function closeModal(){document.getElementById('paymentModal').classList.remove('active')}
+function openRescheduleModal(){document.getElementById('rescheduleModal').classList.add('active')}
+function closeRescheduleModal(){document.getElementById('rescheduleModal').classList.remove('active');document.getElementById('bookingResult').style.display='none';document.getElementById('manageBookingId').value=''}
+
+function findBooking(){const id=document.getElementById('manageBookingId').value.trim();if(!id){showToast('Enter booking ID!','error');return}const bookings=getBookings();const booking=bookings.find(b=>b.id===id);const resultEl=document.getElementById('bookingResult');if(!booking){resultEl.innerHTML='<p style="color:var(--primary);font-weight:600"><i class="fas fa-exclamation-circle"></i> Booking not found!</p>';resultEl.style.display='block';return}const isPast=new Date(booking.date)<new Date(new Date().toISOString().split('T')[0]);resultEl.innerHTML='<div style="text-align:left;background:var(--bg);padding:20px;border-radius:16px;border:1px solid var(--border)"><p><strong>Service:</strong> '+booking.service+'</p><p><strong>Date:</strong> '+booking.date+'</p><p><strong>Time:</strong> '+booking.time+'</p><p><strong>Status:</strong> <span style="color:'+(booking.status==='Cancelled'?'#ef4444':'var(--accent)')+'">'+booking.status+'</span></p>'+(booking.status!=='Cancelled'&&!isPast?'<div style="display:flex;gap:10px;margin-top:15px"><button class="btn btn-sm" style="flex:1" onclick="cancelBooking(''+id+'')"><i class="fas fa-times"></i> Cancel</button></div>':'')+'</div>';resultEl.style.display='block'}
+
+function cancelBooking(id){const bookings=getBookings();const idx=bookings.findIndex(b=>b.id===id);if(idx>-1){bookings[idx].status='Cancelled';localStorage.setItem(KEY,JSON.stringify(bookings));showToast('Booking cancelled!','success');closeRescheduleModal();loadSlots()}}
+
+document.getElementById('bookingForm').addEventListener('submit',function(e){e.preventDefault();if(selectedServices.length===0){showToast('Select at least one service!','error');return}const time=document.getElementById('selectedTime').value;const pay=document.getElementById('paymentMethod').value;const date=document.getElementById('date').value;if(!time){showToast('Select a time slot!','error');return}if(!pay){showToast('Select payment method!','error');return}const needed=selectedServices.length;const startMins=timeToMinutes(time);for(let i=0;i<needed;i++){const checkTime=minutesToTime(startMins+(i*30));if(isSlotBooked(date,checkTime)){showToast('Slot '+formatTime(checkTime)+' already booked!','error');loadSlots();return}}let totalPrice=0;selectedServices.forEach(s=>totalPrice+=s.price);const serviceNames=selectedServices.map(s=>s.name).join(', ');const data={name:document.getElementById('name').value,phone:document.getElementById('phone').value,email:document.getElementById('email').value,service:serviceNames,date:date,time:time,slots:needed,paymentMethod:pay,paymentStatus:pay==='online'?'Paid Online (Pending Verification)':'Pay at Salon',bookingStatus:'Confirmed',notes:document.getElementById('notes').value,price:totalPrice,paymentVerified:'No'};if(pay==='online'){document.getElementById('qrAmount').textContent='Rs.'+totalPrice.toLocaleString();document.getElementById('modalUpiId').textContent=UPI_ID;document.getElementById('stepUpiId').textContent=UPI_ID;const msg=encodeURIComponent('Hi Amrit, I have made an online payment of Rs.'+totalPrice+' for: '+serviceNames+'\nDate: '+date+'\nTime: '+time+'\nName: '+document.getElementById('name').value+'\nPlease find my payment screenshot attached.');document.getElementById('whatsappBtn').href='https://wa.me/'+WHATSAPP_NUMBER+'?text='+msg;document.getElementById('paymentModal').classList.add('active');return}sendBooking(data)});
+
+function confirmOnlinePay(){closeModal();let totalPrice=0;selectedServices.forEach(s=>totalPrice+=s.price);const serviceNames=selectedServices.map(s=>s.name).join(', ');const needed=selectedServices.length;const data={name:document.getElementById('name').value,phone:document.getElementById('phone').value,email:document.getElementById('email').value,service:serviceNames,date:document.getElementById('date').value,time:document.getElementById('selectedTime').value,slots:needed,paymentMethod:'online',paymentStatus:'Paid Online (Pending Verification)',bookingStatus:'Confirmed',notes:document.getElementById('notes').value,price:totalPrice,paymentVerified:'No'};sendBooking(data)}
+
+function sendBooking(data){const btn=document.getElementById('submitBtn');btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Processing...';const localBooking={id:'SS'+Date.now(),timestamp:new Date().toISOString(),...data,status:'Confirmed'};saveBooking(localBooking);fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)}).then(r=>r.json()).then(result=>{if(result.success){showToast('Booked! ID: '+result.bookingId,'success');sendWhatsAppConfirmation(localBooking)}else{showToast(result.message,'error')}resetForm()}).catch(err=>{console.log(err);showToast('Saved! ID: '+localBooking.id,'success');sendWhatsAppConfirmation(localBooking);resetForm()}).finally(()=>{btn.disabled=false;btn.innerHTML='<i class="fas fa-calendar-check"></i> Confirm Booking'})}
+
+function sendWhatsAppConfirmation(booking){const msg=encodeURIComponent('Hi '+booking.name+', your appointment at SS Beauty Salon is confirmed!\n\nService: '+booking.service+'\nDate: '+booking.date+'\nTime: '+booking.time+'\nTotal: Rs.'+booking.price+'\nBooking ID: '+booking.id+'\n\nSee you soon!');window.open('https://wa.me/91'+booking.phone+'?text='+msg,'_blank')}
+
+function resetForm(){document.getElementById('bookingForm').reset();document.querySelectorAll('.service-card').forEach(c=>c.classList.remove('selected'));selectedServices=[];updateSelectedServices();document.querySelectorAll('.timeline-slot').forEach(s=>{s.classList.remove('selected');s.textContent=formatTime(s.dataset.time)});document.querySelectorAll('.payment-option').forEach(o=>o.classList.remove('selected'));document.getElementById('totalPrice').style.display='none';document.getElementById('priceValue').textContent='0';document.getElementById('slotsNeeded').value='0 services = 0 slots';document.getElementById('slotRangeInfo').classList.remove('show');document.getElementById('smartSuggest').classList.remove('show');loadSlots()}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+makeTimeline();
+loadSlots();
+</script>
+</body>
+</html>
